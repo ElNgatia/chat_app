@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:chat_app/models/user_model.dart';
 import 'package:chat_app/screens/auth_screen.dart';
 import 'package:chat_app/screens/home_screen.dart';
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
       UserModel userModel = UserModel.fromJson(userData);
       return HomeScreen(userModel);
     } else {
-      return AuthScreen();
+      return const AuthScreen();
     }
   }
 

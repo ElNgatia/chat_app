@@ -1,11 +1,14 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:chat_app/main.dart';
-import 'package:chat_app/screens/home_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthScreen extends StatefulWidget {
+  const AuthScreen({super.key});
+
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
@@ -30,7 +33,7 @@ class _AuthScreenState extends State<AuthScreen> {
         await firestore.collection('users').doc(userCredential.user!.uid).get();
 
     if (userExist.exists) {
-      print("You're a user already");
+
     } else {
       await firestore.collection('users').doc(userCredential.user!.uid).set({
         'email': userCredential.user!.email,
