@@ -16,16 +16,15 @@ dependencies:
 
 
 
-  cupertino_icons: ^1.0.2
+
   firebase_core: ^2.7.0
   firebase_auth: ^4.2.9
   cloud_firestore: ^4.4.3
   google_sign_in: ^6.0.2
+  profanity_filter: ^2.0.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
+  dependency_validator: ^3.0.0
 
   flutter_lints: ^2.0.0
 

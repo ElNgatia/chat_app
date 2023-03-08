@@ -36,11 +36,11 @@ class _SearchScreenState extends State<SearchScreen> {
         });
         return;
       }
-      value.docs.forEach((user) {
+      for (var user in value.docs) {
         if (user.data()['email'] != widget.user.email) {
           searchResult.add(user.data());
         }
-      });
+      }
       setState(() {
         isLoading = false;
       });

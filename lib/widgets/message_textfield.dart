@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:profanity_filter/profanity_filter.dart';
 
 class MessageTextField extends StatefulWidget {
+  final filter = ProfanityFilter();
   final String currentId;
   final String friendId;
-  const MessageTextField(this.currentId, this.friendId, {super.key});
+  MessageTextField(this.currentId, this.friendId, {super.key});
 
   @override
   State<MessageTextField> createState() => _MessageTextFieldState();
@@ -41,7 +43,11 @@ class _MessageTextFieldState extends State<MessageTextField> {
           ),
           GestureDetector(
             onTap: () async {
-              String message = _controller.text;
+              String message = _controller.text.trim();
+              String filteredMessage = widget.filter.censor(message);
+              if (filteredMessage.isEmpty) {
+                return;
+              }
               _controller.clear();
               await FirebaseFirestore.instance
                   .collection('users')
@@ -50,7 +56,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                   .doc(widget.friendId)
                   .collection('chats')
                   .add({
-                'message': message,
+                'message': filteredMessage,
                 'receiverId': widget.friendId,
                 'senderId': widget.currentId,
                 'type': 'text',
@@ -62,7 +68,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                     .collection('messages')
                     .doc(widget.currentId)
                     .set({
-                  'lastMessage': message,
+                  'lastMessage': filteredMessage,
                 });
               });
 
@@ -73,7 +79,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                   .doc(widget.currentId)
                   .collection('chats')
                   .add({
-                'message': message,
+                'message': filteredMessage,
                 'receiverId': widget.friendId,
                 'senderId': widget.currentId,
                 'type': 'text',
@@ -85,7 +91,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                     .collection('messages')
                     .doc(widget.friendId)
                     .set({
-                  'lastMessage': message,
+                  'lastMessage': filteredMessage,
                 });
               });
             },
