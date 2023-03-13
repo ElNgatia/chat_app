@@ -34,3 +34,13 @@ Once the code loads in your editor, in this case, Visual Studio Code, run
 flutter get pub
 ```
 to update the packages required.
+
+## Project Scope
+
+This project targets Android platform only. Any other platform may or may not run as intended and should be noted that no intentions are in place to build it for other platforms.
+
+## Project Goal
+
+This project seeks to deliver real time messaging using Firebase as the backend. We have implemented a Google sign up to identify the users.
+A profanity filter has been put in place to check the messages sent to other users.
+The list used to filter out words can be found at [LDNOOBW on Github](https://github.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words)
