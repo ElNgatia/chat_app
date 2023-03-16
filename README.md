@@ -57,3 +57,8 @@ Run after building apk
 ```
 flutter install
 ```
+
+
+## Navigating the app
+
+Search for users by the exact name they have used to sign up
