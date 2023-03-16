@@ -44,3 +44,16 @@ This project targets Android platform only. Any other platform may or may not ru
 This project seeks to deliver real time messaging using Firebase as the backend. We have implemented a Google sign up to identify the users.
 A profanity filter has been put in place to check the messages sent to other users.
 The list used to filter out words can be found at [LDNOOBW on Github](https://github.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words)
+
+## Building the app from IDE
+
+Run the following flutter code
+```
+flutter build apk
+```
+## Installing the app to your device
+
+Run after building apk
+```
+flutter install
+```
